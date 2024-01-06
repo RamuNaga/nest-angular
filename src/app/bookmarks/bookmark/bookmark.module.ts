@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AddLinkModule } from './add-link/add-link.module';
+import { LoaderComponent } from '../../common/components/loader/loader.component';
 
 @NgModule({
   declarations: [BookmarkComponent],
@@ -20,6 +21,7 @@ import { AddLinkModule } from './add-link/add-link.module';
     AddLinkModule,
     MatCardModule,
     MatProgressSpinnerModule,
+    LoaderComponent,
   ],
   exports: [BookmarkComponent],
 })

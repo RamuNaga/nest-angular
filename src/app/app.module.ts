@@ -20,6 +20,7 @@ import { MyDialogModule } from './common/components/dialog/dialog.module';
 import { BookmarksEffects } from './bookmarks/state/bookmarks.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MyCommonModule } from './common/common.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,12 +31,12 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     StoreModule.forRoot(appReducer),
     StoreDevtoolsModule.instrument({ logOnly: !isDevMode() }),
     AppRoutingModule,
+    MyCommonModule,
     HeaderModule,
     LoginModule,
     SignUpModule,
     HttpClientModule,
     ApolloModule,
-    MyDialogModule,
     BookmarkModule,
     MatProgressSpinnerModule,
   ],
