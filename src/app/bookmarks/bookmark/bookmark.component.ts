@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { switchMap } from 'rxjs';
+import { Observable, switchMap, tap } from 'rxjs';
 import {
   Bookmark,
   BookmarkGQL,
@@ -9,6 +9,13 @@ import {
   LinksGQL,
 } from '../../../generated-types';
 import { AddLinkComponent } from './add-link/add-link.component';
+import { Store } from '@ngrx/store';
+import { Appstate } from '../../store/app.state';
+import { getBookById } from '../state/bookmarks/bookmarks.selector';
+import { fetchLinksByUrls } from '../state/links/links.action';
+import { setLoadingSpinner } from '../../store/Shared/shared.action';
+import { getLinks } from '../state/links/links.selector';
+import { getLoading } from '../../store/Shared/shared.selector';
 
 @Component({
   selector: 'app-bookmark',
@@ -16,38 +23,28 @@ import { AddLinkComponent } from './add-link/add-link.component';
   styleUrls: ['./bookmark.component.scss'],
 })
 export class BookmarkComponent implements OnInit {
-  bookmark: Bookmark;
-  links: Link[];
-  isLoading = true;
+  bookmark$ = this.store.select(getBookById);
+  links$ = this.store.select(getLinks);
+  isLoading$ = this.store.select(getLoading);
 
   constructor(
-    private readonly route: ActivatedRoute,
-    private readonly bookmarkGql: BookmarkGQL,
     private readonly dialog: MatDialog,
-    private readonly linksGql: LinksGQL,
+    private store: Store<Appstate>,
   ) {}
 
   ngOnInit(): void {
-    this.route.params
-      .pipe(
-        switchMap((params) => {
-          return this.bookmarkGql.watch({ _id: params['id'] }).valueChanges;
-        }),
-        switchMap((result) => {
-          this.bookmark = result.data.bookmark;
-          return this.linksGql.watch({ urls: result.data.bookmark.links })
-            .valueChanges;
-        }),
-      )
-      .subscribe((result) => {
-        this.isLoading = result.loading;
-        this.links = result.data.links;
-      });
+    this.store.select(getBookById).subscribe((bookmark) => {
+      let bookmarkData = bookmark as Bookmark;
+      if (bookmarkData && bookmarkData.links.length > 0) {
+        this.store.dispatch(fetchLinksByUrls({ urls: bookmarkData.links }));
+        this.store.dispatch(setLoadingSpinner({ status: true }));
+      }
+    });
   }
 
-  onAdd() {
+  onAdd(bookmark: Bookmark) {
     this.dialog.open(AddLinkComponent, {
-      data: { bookmark: this.bookmark },
+      data: { bookmark: bookmark },
     });
   }
 

@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Bookmark, BookmarksGQL } from '../../generated-types';
 import { Router } from '@angular/router';
 import { CreateBookmarkComponent } from './create-bookmark/create-bookmark.component';
-import { Observable, map } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { Appstate } from '../store/app.state';
-import { getBookmarks } from './state/bookmarks.selector';
+import { getBookmarks } from './state/bookmarks/bookmarks.selector';
+import { fetchBookmarks } from './state/bookmarks/bookmarks.action';
 
 @Component({
   selector: 'app-bookmarks',
@@ -14,23 +13,15 @@ import { getBookmarks } from './state/bookmarks.selector';
   styleUrl: './bookmarks.component.scss',
 })
 export class BookmarksComponent implements OnInit {
-  bookmarks$: Observable<Bookmark[]>;
-
+  bookmarks$ = this.store.select(getBookmarks);
   constructor(
     private readonly dialog: MatDialog,
-    private readonly bookmarksGql: BookmarksGQL,
     private readonly router: Router,
     private store: Store<Appstate>,
   ) {}
 
   ngOnInit(): void {
-    // this.bookmarks$ = this.bookmarksGql.watch().valueChanges.pipe(
-    //   map((result) => {
-    //     return result.data.bookmarks;
-    //   }),
-    // );
-
-    this.bookmarks$ = this.store.select(getBookmarks);
+    this.store.dispatch(fetchBookmarks());
   }
 
   onFabClick() {
@@ -38,6 +29,6 @@ export class BookmarksComponent implements OnInit {
   }
 
   onBookmarkClick(bookmarkId: string) {
-    this.router.navigate(['/bookmarks', bookmarkId]);
+    this.router.navigate(['bookmarks/details/', bookmarkId]);
   }
 }

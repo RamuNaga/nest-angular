@@ -1,7 +1,7 @@
-import { Bookmark } from '../../../generated-types';
+import { Bookmark } from '../../../../generated-types';
 
 export interface BookmarksState {
-  bookmarks: Array<Bookmark> | [];
+  bookmarks: Bookmark[];
 }
 
 export const initialState: BookmarksState = {

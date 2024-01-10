@@ -1,6 +1,6 @@
 <ul class="bookmarks">
   <li class="bookmark" *ngFor="let bookmark of bookmarks$ | async">
-    <mat-card (click)="onBookmarkClick(bookmark._id)">
+    <mat-card [routerLink]="['details', bookmark._id]">
       <h3>{{ bookmark.name }}</h3>
     </mat-card>
   </li>

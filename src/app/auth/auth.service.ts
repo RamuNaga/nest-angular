@@ -43,7 +43,7 @@ export class AuthService {
       case 'EMAIL_EXISTS':
         return 'Email already exists';
       default:
-        return 'Unknown error occurred. Please try again';
+        return message;
     }
   }
 }

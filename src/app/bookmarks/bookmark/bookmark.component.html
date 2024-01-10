@@ -1,27 +1,29 @@
-<ng-container *ngIf="bookmark">
+<ng-container *ngIf="bookmark$ | async as bookmarkData">
   <mat-toolbar>
-    <span>{{ bookmark.name }}</span>
+    <span>{{ bookmarkData.name }}</span>
     <span class="spacer"></span>
-    <button mat-icon-button (click)="onAdd()">
+    <button mat-icon-button (click)="onAdd(bookmarkData)">
       <mat-icon>add</mat-icon>
     </button>
   </mat-toolbar>
-  <div *ngIf="isLoading; else showLinks">
+  <div *ngIf="isLoading$ | async as isLoading; else showLinks">
     <app-loader></app-loader>
   </div>
   <ng-template #showLinks>
-    <ul class="links">
-      <li class="link" *ngFor="let link of links">
-        <mat-card (click)="onLinkClick(link.url)">
-          <mat-card-title-group>
-            <mat-card-title class="title">{{ link.title }}</mat-card-title>
-            <mat-card-subtitle class="sub-title">{{
-              link.siteName
-            }}</mat-card-subtitle>
-            <img src="{{ link.images[0] }}" alt="" mat-card-md-image />
-          </mat-card-title-group>
-        </mat-card>
-      </li>
-    </ul>
+    <ng-container *ngIf="links$ | async as links">
+      <ul class="links">
+        <li class="link" *ngFor="let link of links">
+          <mat-card (click)="onLinkClick(link.url)">
+            <mat-card-title-group>
+              <mat-card-title class="title">{{ link.title }}</mat-card-title>
+              <mat-card-subtitle class="sub-title">{{
+                link.siteName
+              }}</mat-card-subtitle>
+              <img src="{{ link.images[0] }}" alt="" mat-card-md-image />
+            </mat-card-title-group>
+          </mat-card>
+        </li>
+      </ul>
+    </ng-container>
   </ng-template>
 </ng-container>

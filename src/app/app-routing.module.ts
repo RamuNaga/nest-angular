@@ -7,7 +7,7 @@ import { BookmarkComponent } from './bookmarks/bookmark/bookmark.component';
 
 const routes: Routes = [
   {
-    path: 'login',
+    path: '',
     component: LoginComponent,
   },
   {
@@ -26,7 +26,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'bookmarks/:id',
+    path: 'bookmarks/details/:id',
     component: BookmarkComponent,
   },
   {

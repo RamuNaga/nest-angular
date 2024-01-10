@@ -16,29 +16,34 @@ import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './auth/state/auth.effects';
 import { StoreModule } from '@ngrx/store';
 import { appReducer } from './store/app.state';
-import { MyDialogModule } from './common/components/dialog/dialog.module';
-import { BookmarksEffects } from './bookmarks/state/bookmarks.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MyCommonModule } from './common/common.module';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { CustomSerializer } from './store/router/custom-serializer';
+import { BookmarksEffects } from './bookmarks/state/bookmarks/bookmarks.effects';
+import { LinkEffects } from './bookmarks/state/links/links.effects';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    EffectsModule.forRoot([AuthEffects, BookmarksEffects]),
-    StoreModule.forRoot(appReducer),
-    StoreDevtoolsModule.instrument({ logOnly: !isDevMode() }),
     AppRoutingModule,
-    MyCommonModule,
     HeaderModule,
     LoginModule,
     SignUpModule,
     HttpClientModule,
     ApolloModule,
     BookmarkModule,
+    MyCommonModule,
     MatProgressSpinnerModule,
+    EffectsModule.forRoot([AuthEffects, BookmarksEffects, LinkEffects]),
+    StoreModule.forRoot(appReducer),
+    StoreDevtoolsModule.instrument({ logOnly: !isDevMode() }),
+    StoreRouterConnectingModule.forRoot({
+      serializer: CustomSerializer,
+    }),
   ],
   providers: [
     {

@@ -1,7 +1,7 @@
-import { DialogModule } from '@angular/cdk/dialog';
 import { NgModule } from '@angular/core';
+import { MyDialogModule } from './components/dialog/dialog.module';
 
 @NgModule({
-  imports: [DialogModule],
+  imports: [MyDialogModule],
 })
 export class MyCommonModule {}

@@ -44,7 +44,7 @@ export class AuthEffects {
               this.store.dispatch(setErrorMessage({ message: errorMessage }));
             }
             this.store.dispatch(setDialogPopup({ showDialog: true }));
-            return EMPTY; //of(setErrorMessage({ message: errorMessage }));
+            return EMPTY;
           }),
         );
       }),

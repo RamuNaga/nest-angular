@@ -2,12 +2,10 @@ import { NgModule } from '@angular/core';
 import { DialogComponent } from './dialog.component';
 import { MatButtonModule } from '@angular/material/button';
 import {
-  MatDialog,
   MatDialogActions,
   MatDialogClose,
   MatDialogContent,
   MatDialogModule,
-  MatDialogRef,
   MatDialogTitle,
 } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
