@@ -8,16 +8,21 @@ import { BookmarkComponent } from './bookmarks/bookmark/bookmark.component';
 const routes: Routes = [
   {
     path: '',
-    component: LoginComponent,
+    redirectTo: 'home',
+    pathMatch: 'full',
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
+    canActivate: [AuthGuard],
   },
   {
     path: 'signup',
     component: SignUpComponent,
   },
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
-    canActivate: [AuthGuard],
+    path: 'login',
+    component: LoginComponent,
   },
   {
     path: 'bookmarks',

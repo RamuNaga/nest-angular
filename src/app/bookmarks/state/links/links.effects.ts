@@ -44,6 +44,7 @@ export class LinkEffects {
               }
               this.store.dispatch(setLoadingSpinner({ status: false }));
               this.store.dispatch(setDialogPopup({ showDialog: true }));
+              this.store.dispatch(fetchLinksByUrlsSuccess({ links: [] }));
               return EMPTY;
             }),
           );

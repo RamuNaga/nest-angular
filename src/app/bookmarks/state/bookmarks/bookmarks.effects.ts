@@ -53,7 +53,7 @@ export class BookmarksEffects {
         }),
       );
     },
-    // { dispatch: false },
+    { functional: true },
   );
 
   // init$ = this.actions$.pipe(
