@@ -14,6 +14,7 @@ import {
   setErrorMessage,
   setLoadingSpinner,
 } from '../../../store/Shared/shared.action';
+import { initialState } from './bookmarks.state';
 
 @Injectable()
 export class BookmarksEffects {
@@ -29,7 +30,6 @@ export class BookmarksEffects {
       return this.actions$.pipe(
         ofType(fetchBookmarks),
         exhaustMap(() => {
-          console.log('fectBookmarks callling');
           return this.bookmarksGql.watch().valueChanges.pipe(
             map((result) => {
               this.store.dispatch(setLoadingSpinner({ status: false }));
@@ -45,6 +45,9 @@ export class BookmarksEffects {
                   errResp.error.message,
                 );
                 this.store.dispatch(setErrorMessage({ message: errorMessage }));
+                this.store.dispatch(
+                  fetchBookmarksSuccess({ bookmarks: initialState.bookmarks }),
+                );
               }
               this.store.dispatch(setLoadingSpinner({ status: false }));
               return EMPTY;

@@ -1,22 +1,32 @@
 <mat-toolbar class="header" color="primary">
-  <ul class="nav">
-    <li *ngIf="isLoggedIn$ | async">
-      <a routerLink="/home">Home</a>
+  <ul class="nav navbar-nav">
+    <li class="nav-item" *ngIf="isLoggedIn$ | async">
+      <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
     </li>
-    <li *ngIf="isLoggedIn$ | async">
-      <a routerLink="/bookmarks">Bookmarks</a>
+    <li class="nav-item" *ngIf="isLoggedIn$ | async">
+      <a class="nav-link" routerLink="/bookmarks" routerLinkActive="active"
+        >Bookmarks</a
+      >
     </li>
     <span class="spacer"></span>
 
-    <li>
+    <li class="nav-item">
       <ng-container *ngIf="isLoggedIn$ | async; else login">
-        <a (click)="logOut()">Logout</a>
+        <a class="nav-link" (click)="logOut()" routerLinkActive="active"
+          >Logout</a
+        >
       </ng-container>
-      <ng-template #login><a routerLink="/login">Login</a></ng-template>
+      <ng-template #login
+        ><a class="nav-link" routerLink="/login" routerLinkActive="active"
+          >Login</a
+        ></ng-template
+      >
     </li>
 
-    <li *ngIf="isLoggedIn$ | async">
-      <a routerLink="/signup">Sign Up</a>
+    <li class="nav-item" *ngIf="isLoggedIn$ | async">
+      <a class="nav-link" routerLink="/signup" routerLinkActive="active"
+        >Sign Up</a
+      >
     </li>
   </ul>
 </mat-toolbar>

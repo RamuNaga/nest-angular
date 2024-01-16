@@ -11,6 +11,7 @@ import {
   setErrorMessage,
   setLoadingSpinner,
 } from '../../../store/Shared/shared.action';
+import { initialState } from './links.state';
 
 @Injectable()
 export class LinkEffects {
@@ -44,7 +45,9 @@ export class LinkEffects {
               }
               this.store.dispatch(setLoadingSpinner({ status: false }));
               this.store.dispatch(setDialogPopup({ showDialog: true }));
-              this.store.dispatch(fetchLinksByUrlsSuccess({ links: [] }));
+              this.store.dispatch(
+                fetchLinksByUrlsSuccess({ links: initialState.links }),
+              );
               return EMPTY;
             }),
           );
