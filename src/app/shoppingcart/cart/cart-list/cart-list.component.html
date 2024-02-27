@@ -1,0 +1,20 @@
+<div class="card">
+  <h2>
+    {{ pageTitle }}
+  </h2>
+  <ng-container *ngIf="cartItems().length; else noItems">
+    <div class="row-header">
+      <div>Product</div>
+      <div>Brand</div>
+      <div>Price (credits)</div>
+      <div>Quantity</div>
+      <div>Extended Price</div>
+    </div>
+    <!-- Display the cart items -->
+    <ng-container *ngFor="let item of cartItems()">
+      <app-cart-item [item]="item" />
+    </ng-container>
+  </ng-container>
+
+  <ng-template #noItems> No items in cart </ng-template>
+</div>

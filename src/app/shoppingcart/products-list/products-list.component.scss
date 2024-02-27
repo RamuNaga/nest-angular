@@ -1,0 +1,10 @@
+.product-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 3rem;
+  height: 110%;
+  overflow-y: scroll;
+}

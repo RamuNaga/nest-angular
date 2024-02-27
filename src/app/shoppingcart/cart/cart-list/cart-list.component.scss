@@ -1,0 +1,15 @@
+.card {
+  width: 100%;
+  border: 1px solid;
+  padding: 15px;
+}
+.row-header {
+  font-weight: 600;
+  width: 100%;
+  height: auto;
+  display: grid;
+  grid-template-rows: repeat(150px);
+  grid-template-columns: repeat(6, 1fr);
+  justify-content: start;
+  align-items: baseline;
+}

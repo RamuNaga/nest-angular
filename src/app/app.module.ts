@@ -5,7 +5,6 @@ import { HttpLink } from 'apollo-angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderModule } from './header/header.module';
 import { SignUpModule } from './auth/sign-up/sign-up.module';
 import { LoginModule } from './auth/login/login.module';
 import { APOLLO_OPTIONS, ApolloModule } from 'apollo-angular';
@@ -23,6 +22,9 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { CustomSerializer } from './store/router/custom-serializer';
 import { BookmarksEffects } from './bookmarks/state/bookmarks/bookmarks.effects';
 import { LinkEffects } from './bookmarks/state/links/links.effects';
+import { ShoppingcartComponent } from './shoppingcart/shoppingcart.component';
+import { HeaderComponent } from './header/header.component';
+import * as productEffects from './shoppingcart/state/products.effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,7 +32,7 @@ import { LinkEffects } from './bookmarks/state/links/links.effects';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    HeaderModule,
+    HeaderComponent,
     LoginModule,
     SignUpModule,
     HttpClientModule,
@@ -38,7 +40,13 @@ import { LinkEffects } from './bookmarks/state/links/links.effects';
     BookmarkModule,
     MyCommonModule,
     MatProgressSpinnerModule,
-    EffectsModule.forRoot([AuthEffects, BookmarksEffects, LinkEffects]),
+    ShoppingcartComponent,
+    EffectsModule.forRoot([
+      AuthEffects,
+      BookmarksEffects,
+      LinkEffects,
+      productEffects,
+    ]),
     StoreModule.forRoot(appReducer),
     StoreDevtoolsModule.instrument({ logOnly: !isDevMode() }),
     StoreRouterConnectingModule.forRoot({

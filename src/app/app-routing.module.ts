@@ -4,6 +4,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { AuthGuard } from './auth/auth.guard';
 import { BookmarkComponent } from './bookmarks/bookmark/bookmark.component';
+import { ShoppingcartComponent } from './shoppingcart/shoppingcart.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,22 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'shopping',
+    loadChildren: () =>
+      import('./shoppingcart/shopping-routes').then(
+        (shopping) => shopping.SHOPPING_ROUTES,
+      ),
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'cart',
+    loadChildren: () =>
+      import('./shoppingcart/cart/cart-routes').then(
+        (cart) => cart.CART_ROUTES,
+      ),
+    canActivate: [AuthGuard],
   },
   {
     path: 'bookmarks',

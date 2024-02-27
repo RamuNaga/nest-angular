@@ -1,0 +1,10 @@
+<mat-toolbar>
+  <ul class="nav navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/cart" routerLinkActive="active">Cart</a>
+      <span class="badge bg-primary" *ngIf="cartCount()">{{
+        cartCount()
+      }}</span>
+    </li>
+  </ul>
+</mat-toolbar>

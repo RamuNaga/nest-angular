@@ -1,0 +1,10 @@
+<mat-card class="product-card">
+  <h2 class="product-price">
+    {{ product.title }}
+  </h2>
+  <img class="product-img" [src]="product.images[0]" alt="angular log" />
+  <h2 class="product-price">£{{ product.price }}</h2>
+  <button mat-stroked-button color="primary" (click)="onProductViewed()">
+    Add
+  </button>
+</mat-card>
