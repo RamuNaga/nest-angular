@@ -12,7 +12,7 @@ import { CartService } from '../../services/cart.service';
   styleUrl: './cart-list.component.scss',
 })
 export class CartListComponent {
-  pageTitle = 'Cart';
+  pageTitle = 'Cart Items';
 
   cartService = inject(CartService);
 
