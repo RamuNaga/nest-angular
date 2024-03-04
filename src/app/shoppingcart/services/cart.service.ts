@@ -30,7 +30,7 @@ export class CartService {
     () => this.subTotal() + this.deliveryFee() + this.tax(),
   );
 
-  // Add the vehicle to the cart
+  // Add the Product to the cart
   // If the item is already in the cart, increase the quantity
   addToCart(product: Product): void {
     const index = this.cartItems().findIndex(

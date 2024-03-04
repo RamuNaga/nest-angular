@@ -21,7 +21,7 @@ export class ProductService {
   constructor() {}
 
   productSelected(id: number) {
-    const foundVehicle = this.products().find((p) => p.id === id);
-    this.selectedProduct.set(foundVehicle);
+    const foundProduct = this.products().find((p) => p.id === id);
+    this.selectedProduct.set(foundProduct);
   }
 }
