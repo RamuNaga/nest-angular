@@ -1,0 +1,16 @@
+.card-total {
+  border: 1px solid !important;
+  padding: 15px;
+  margin-top: 0.6rem;
+}
+.card-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.details-item {
+  display: flex;
+  flex-direction: column;
+  padding-right: 1.5rem;
+}

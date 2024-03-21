@@ -6,6 +6,7 @@ import { CartService } from '../../services/cart.service';
   selector: 'app-cart-total',
   standalone: true,
   imports: [DecimalPipe, NgIf],
+  styleUrl: './cart-total.component.scss',
   templateUrl: './cart-total.component.html',
 })
 export class CartTotalComponent {
