@@ -17,7 +17,7 @@ import { MessageModel } from './model/message';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnDestroy {
-  title = 'NestAngular Frontend Application';
+  title = 'NestAngular Frontend Application121';
 
   showDialog$ = this.store.select(getDialog);
   errorMessage$ = this.store.select<MessageModel>(getErrorMessage);

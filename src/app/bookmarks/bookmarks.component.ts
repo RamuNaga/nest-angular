@@ -19,7 +19,7 @@ export class BookmarksComponent implements OnInit {
     private readonly router: Router,
     private store: Store<Appstate>,
   ) {}
-
+  // life cycle
   ngOnInit(): void {
     this.store.dispatch(fetchBookmarks());
   }
