@@ -9,7 +9,7 @@ import { SignUpModule } from './auth/sign-up/sign-up.module';
 import { LoginModule } from './auth/login/login.module';
 import { APOLLO_OPTIONS, ApolloModule } from 'apollo-angular';
 import { InMemoryCache } from '@apollo/client/core';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { BookmarkModule } from './bookmarks/bookmark/bookmark.module';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './auth/state/auth.effects';
@@ -26,47 +26,41 @@ import { ShoppingcartComponent } from './shoppingcart/shoppingcart.component';
 import { HeaderComponent } from './header/header.component';
 import * as productEffects from './shoppingcart/state/products.effects';
 
-@NgModule({
-  declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    HeaderComponent,
-    LoginModule,
-    SignUpModule,
-    HttpClientModule,
-    ApolloModule,
-    BookmarkModule,
-    MyCommonModule,
-    MatProgressSpinnerModule,
-    ShoppingcartComponent,
-    EffectsModule.forRoot([
-      AuthEffects,
-      BookmarksEffects,
-      LinkEffects,
-      productEffects,
-    ]),
-    StoreModule.forRoot(appReducer),
-    StoreDevtoolsModule.instrument({ logOnly: !isDevMode() }),
-    StoreRouterConnectingModule.forRoot({
-      serializer: CustomSerializer,
-    }),
-  ],
-  providers: [
-    {
-      provide: APOLLO_OPTIONS,
-      useFactory: (httpLink: HttpLink) => {
-        return {
-          cache: new InMemoryCache(),
-          link: httpLink.create({
-            uri: 'api/graphql',
-          }),
-        };
-      },
-      deps: [HttpLink],
-    },
-  ],
-  bootstrap: [AppComponent],
-})
+@NgModule({ declarations: [AppComponent],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        HeaderComponent,
+        LoginModule,
+        SignUpModule,
+        ApolloModule,
+        BookmarkModule,
+        MyCommonModule,
+        MatProgressSpinnerModule,
+        ShoppingcartComponent,
+        EffectsModule.forRoot([
+            AuthEffects,
+            BookmarksEffects,
+            LinkEffects,
+            productEffects,
+        ]),
+        StoreModule.forRoot(appReducer),
+        StoreDevtoolsModule.instrument({ logOnly: !isDevMode() }),
+        StoreRouterConnectingModule.forRoot({
+            serializer: CustomSerializer,
+        })], providers: [
+        {
+            provide: APOLLO_OPTIONS,
+            useFactory: (httpLink: HttpLink) => {
+                return {
+                    cache: new InMemoryCache(),
+                    link: httpLink.create({
+                        uri: 'api/graphql',
+                    }),
+                };
+            },
+            deps: [HttpLink],
+        },
+        provideHttpClient(withInterceptorsFromDi()),
+    ] })
 export class AppModule {}
