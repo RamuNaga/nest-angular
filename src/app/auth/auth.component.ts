@@ -2,9 +2,10 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-auth',
-  templateUrl: './auth.component.html',
-  styleUrl: './auth.component.scss'
+    selector: 'app-auth',
+    templateUrl: './auth.component.html',
+    styleUrl: './auth.component.scss',
+    standalone: false
 })
 export class AuthComponent implements OnInit {
 

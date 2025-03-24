@@ -17,9 +17,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MessageModel } from '../../../model/message';
 
 @Component({
-  selector: 'app-dialog',
-  templateUrl: './dialog.component.html',
-  styleUrls: ['./dialog.component.scss'],
+    selector: 'app-dialog',
+    templateUrl: './dialog.component.html',
+    styleUrls: ['./dialog.component.scss'],
+    standalone: false
 })
 export class DialogComponent {
   message: string;

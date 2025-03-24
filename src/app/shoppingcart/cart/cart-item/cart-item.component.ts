@@ -6,11 +6,10 @@ import { CartItem } from '../cart';
 import { CartService } from '../../services/cart.service';
 
 @Component({
-  selector: 'app-cart-item',
-  standalone: true,
-  imports: [DecimalPipe, FormsModule, NgFor, NgIf],
-  templateUrl: './cart-item.component.html',
-  styleUrl: './cart-item.component.scss',
+    selector: 'app-cart-item',
+    imports: [DecimalPipe, FormsModule, NgFor, NgIf],
+    templateUrl: './cart-item.component.html',
+    styleUrl: './cart-item.component.scss'
 })
 export class CartItemComponent {
   cartService = inject(CartService);

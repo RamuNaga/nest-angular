@@ -2,11 +2,10 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-filter',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './filter.component.html',
-  styleUrl: './filter.component.scss'
+    selector: 'app-filter',
+    imports: [CommonModule],
+    templateUrl: './filter.component.html',
+    styleUrl: './filter.component.scss'
 })
 export class FilterComponent {
 

@@ -4,9 +4,10 @@ import { FormControl, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-create-bookmark',
-  templateUrl: './create-bookmark.component.html',
-  styleUrl: './create-bookmark.component.scss',
+    selector: 'app-create-bookmark',
+    templateUrl: './create-bookmark.component.html',
+    styleUrl: './create-bookmark.component.scss',
+    standalone: false
 })
 export class CreateBookmarkComponent implements OnInit {
   bookmarkName = new FormControl('', [Validators.required]);

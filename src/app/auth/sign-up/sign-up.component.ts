@@ -6,9 +6,10 @@ import { LoginService } from '../login/login.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-sign-up',
-  templateUrl: './sign-up.component.html',
-  styleUrl: './sign-up.component.scss',
+    selector: 'app-sign-up',
+    templateUrl: './sign-up.component.html',
+    styleUrl: './sign-up.component.scss',
+    standalone: false
 })
 export class SignUpComponent implements OnInit {
   constructor(

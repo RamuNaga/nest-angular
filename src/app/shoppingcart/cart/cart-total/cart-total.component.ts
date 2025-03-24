@@ -3,11 +3,10 @@ import { DecimalPipe, NgIf } from '@angular/common';
 import { CartService } from '../../services/cart.service';
 
 @Component({
-  selector: 'app-cart-total',
-  standalone: true,
-  imports: [DecimalPipe, NgIf],
-  styleUrl: './cart-total.component.scss',
-  templateUrl: './cart-total.component.html',
+    selector: 'app-cart-total',
+    imports: [DecimalPipe, NgIf],
+    styleUrl: './cart-total.component.scss',
+    templateUrl: './cart-total.component.html'
 })
 export class CartTotalComponent {
   cartService = inject(CartService);

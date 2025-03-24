@@ -12,9 +12,10 @@ import {
 import { FormControl, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-add-link',
-  templateUrl: './add-link.component.html',
-  styleUrl: './add-link.component.scss',
+    selector: 'app-add-link',
+    templateUrl: './add-link.component.html',
+    styleUrl: './add-link.component.scss',
+    standalone: false
 })
 export class AddLinkComponent {
   link = new FormControl('', Validators.required);

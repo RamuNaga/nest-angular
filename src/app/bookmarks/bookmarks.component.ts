@@ -8,9 +8,10 @@ import { getBookmarks } from './state/bookmarks/bookmarks.selector';
 import { fetchBookmarks } from './state/bookmarks/bookmarks.action';
 
 @Component({
-  selector: 'app-bookmarks',
-  templateUrl: './bookmarks.component.html',
-  styleUrl: './bookmarks.component.scss',
+    selector: 'app-bookmarks',
+    templateUrl: './bookmarks.component.html',
+    styleUrl: './bookmarks.component.scss',
+    standalone: false
 })
 export class BookmarksComponent implements OnInit {
   bookmarks$ = this.store.select(getBookmarks);
