@@ -4,12 +4,14 @@ import { APOLLO_OPTIONS } from 'apollo-angular';
 import { concat, concatMap } from 'rxjs';
 import { LoginService } from '../login/login.service';
 import { Router } from '@angular/router';
+import { AuthComponent } from '../auth.component';
 
 @Component({
-    selector: 'app-sign-up',
-    templateUrl: './sign-up.component.html',
-    styleUrl: './sign-up.component.scss',
-    standalone: false
+  selector: 'app-sign-up',
+  templateUrl: './sign-up.component.html',
+  styleUrl: './sign-up.component.scss',
+  imports: [AuthComponent],
+  standalone: true,
 })
 export class SignUpComponent implements OnInit {
   constructor(

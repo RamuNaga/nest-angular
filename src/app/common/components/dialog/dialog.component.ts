@@ -6,6 +6,7 @@ import {
   MatDialogClose,
   MatDialogConfig,
   MatDialogContent,
+  MatDialogModule,
   MatDialogRef,
   MatDialogTitle,
 } from '@angular/material/dialog';
@@ -15,12 +16,15 @@ import { Appstate } from '../../../store/app.state';
 import { getErrorMessage } from '../../../store/Shared/shared.selector';
 import { MatButtonModule } from '@angular/material/button';
 import { MessageModel } from '../../../model/message';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
-    selector: 'app-dialog',
-    templateUrl: './dialog.component.html',
-    styleUrls: ['./dialog.component.scss'],
-    standalone: false
+  selector: 'app-dialog',
+  templateUrl: './dialog.component.html',
+  styleUrls: ['./dialog.component.scss'],
+  standalone: true,
+  imports: [MatDialogModule, MatIconModule, MatToolbarModule],
 })
 export class DialogComponent {
   message: string;

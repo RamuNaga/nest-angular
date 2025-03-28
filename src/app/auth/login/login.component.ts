@@ -6,12 +6,14 @@ import { Store } from '@ngrx/store';
 import { Appstate } from '../../store/app.state';
 import { loginStart } from '../state/auth.action';
 import { setLoadingSpinner } from '../../store/Shared/shared.action';
+import { AuthComponent } from '../auth.component';
 
 @Component({
-    selector: 'app-login',
-    templateUrl: './login.component.html',
-    styleUrl: './login.component.scss',
-    standalone: false
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.scss',
+  imports: [AuthComponent],
+  standalone: true,
 })
 export class LoginComponent implements OnInit {
   constructor(

@@ -5,10 +5,11 @@ import { CartService } from '../services/cart.service';
 import { RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
-    selector: 'app-cartheader',
-    imports: [MatToolbarModule, RouterModule, NgIf],
-    templateUrl: './cartheader.component.html',
-    styleUrl: './cartheader.component.scss'
+  selector: 'app-cartheader',
+  imports: [MatToolbarModule, RouterModule, NgIf],
+  templateUrl: './cartheader.component.html',
+  styleUrl: './cartheader.component.scss',
+  standalone: true,
 })
 export class CartheaderComponent {
   cartService = inject(CartService);

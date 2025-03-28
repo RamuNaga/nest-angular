@@ -9,13 +9,33 @@ import {
   MatDialog,
   MatDialogRef,
 } from '@angular/material/dialog';
-import { FormControl, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import {
+  MatError,
+  MatFormField,
+  MatFormFieldControl,
+  MatLabel,
+} from '@angular/material/form-field';
+import { NgIf } from '@angular/common';
 
 @Component({
-    selector: 'app-add-link',
-    templateUrl: './add-link.component.html',
-    styleUrl: './add-link.component.scss',
-    standalone: false
+  selector: 'app-add-link',
+  templateUrl: './add-link.component.html',
+  styleUrl: './add-link.component.scss',
+  imports: [
+    MatFormField,
+    MatError,
+    ReactiveFormsModule,
+    MatLabel,
+    FormsModule,
+    NgIf,
+  ],
+  standalone: true,
 })
 export class AddLinkComponent {
   link = new FormControl('', Validators.required);

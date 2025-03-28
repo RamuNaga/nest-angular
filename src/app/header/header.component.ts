@@ -6,10 +6,11 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 @Component({
-    imports: [MatToolbarModule, CommonModule, RouterModule],
-    selector: 'app-header',
-    templateUrl: './header.component.html',
-    styleUrl: './header.component.scss'
+  imports: [MatToolbarModule, CommonModule, RouterModule],
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrl: './header.component.scss',
+  standalone: true,
 })
 export class HeaderComponent {
   isLoggedIn$: Observable<boolean>;

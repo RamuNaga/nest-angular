@@ -16,12 +16,32 @@ import { fetchLinksByUrls } from '../state/links/links.action';
 import { setLoadingSpinner } from '../../store/Shared/shared.action';
 import { getLinks } from '../state/links/links.selector';
 import { getLoading } from '../../store/Shared/shared.selector';
+import { MatCardModule } from '@angular/material/card';
+import { LoaderComponent } from '../../common/components/loader/loader.component';
+import { AsyncPipe, NgFor, NgIf } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
-    selector: 'app-bookmark',
-    templateUrl: './bookmark.component.html',
-    styleUrls: ['./bookmark.component.scss'],
-    standalone: false
+  selector: 'app-bookmark',
+  templateUrl: './bookmark.component.html',
+  styleUrls: ['./bookmark.component.scss'],
+  imports: [
+    MatCardModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+
+    MatCardModule,
+    MatProgressSpinnerModule,
+    LoaderComponent,
+    NgIf,
+    NgFor,
+    AsyncPipe,
+  ],
+  standalone: true,
 })
 export class BookmarkComponent implements OnInit {
   bookmark$ = this.store.select(getBookById);

@@ -10,12 +10,15 @@ import {
 import { openCommonDialog } from './common/components/dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MessageModel } from './model/message';
+import { HeaderComponent } from './header/header.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss'],
-    standalone: false
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+  imports: [HeaderComponent, RouterModule],
+  standalone: true,
 })
 export class AppComponent implements OnDestroy {
   title = 'NestAngular Frontend Application121';

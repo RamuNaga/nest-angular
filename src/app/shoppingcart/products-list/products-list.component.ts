@@ -9,10 +9,11 @@ import { ProductService } from '../services/product.service';
 import { CartService } from '../services/cart.service';
 
 @Component({
-    selector: 'app-products-list',
-    imports: [ProductCardComponent, AsyncPipe],
-    templateUrl: './products-list.component.html',
-    styleUrl: './products-list.component.scss'
+  selector: 'app-products-list',
+  imports: [ProductCardComponent],
+  templateUrl: './products-list.component.html',
+  styleUrl: './products-list.component.scss',
+  standalone: true,
 })
 export class ProductsListComponent implements OnInit {
   store = inject(Store);

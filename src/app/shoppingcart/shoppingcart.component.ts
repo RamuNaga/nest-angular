@@ -13,14 +13,10 @@ const shoppingRoutes: Routes = [
 ];
 
 @Component({
-    selector: 'app-shoppingcart',
-    imports: [
-        CartheaderComponent,
-        ProductsListComponent,
-        FilterComponent,
-        RouterModule,
-    ],
-    templateUrl: './shoppingcart.component.html',
-    styleUrl: './shoppingcart.component.scss'
+  selector: 'app-shoppingcart',
+  imports: [CartheaderComponent, FilterComponent, RouterModule],
+  standalone: true,
+  templateUrl: './shoppingcart.component.html',
+  styleUrl: './shoppingcart.component.scss',
 })
 export class ShoppingcartComponent {}
